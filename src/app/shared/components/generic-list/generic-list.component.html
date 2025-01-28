@@ -1,0 +1,14 @@
+@if (!genericList) {
+    <div class="gif" >
+      <img src="loading.gif" alt="loading" >
+    </div>
+  }
+  @else if(genericList.length === 0){
+    <div class="gif" >
+      Doesn't have any item
+    </div>
+  }
+    @else{
+        <ng-content select="[generic-content]"></ng-content>
+    }
+  

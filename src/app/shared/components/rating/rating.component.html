@@ -1,0 +1,8 @@
+@for (item of ratingPrinted; track $index){
+    <mat-icon
+    [ngClass]="{'lighting-rating': $index + 1 <= maxRating}"
+    (mouseenter)="handlerMouseEnter($index)"
+    (mouseleave)="handlerMouseLeave()"
+    (click)="handlerClick($index)"
+    >star</mat-icon>
+}
