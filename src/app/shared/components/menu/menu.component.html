@@ -1,19 +1,28 @@
 <mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [matMenuTriggerFor]="mainMenu">
+  <button routerLink="" mat-icon-button class="button-logo" >
     <mat-icon>movie</mat-icon>
+    <span class="title-logo">
+      Movies</span>
   </button>
-  <span>Movies</span>
-  <span class="example-spacer"></span>
-  
+  <div>
+    <button routerLink="genres" mat-icon-button class="button-logo">
+      <span class="title-logo">Genres</span>
+    </button>
+  </div>
+  <div>
+    <button routerLink="/movies/create" mat-icon-button class="button-logo">
+      <span class="title-logo">Movies</span>
+    </button>
+  </div>
+  <div>
+    <button routerLink="actors" mat-icon-button class="button-logo">
+      <span class="title-logo">Actors</span>
+    </button>
+  </div>
+  <div>
+    <button routerLink="cinema" mat-icon-button class="button-logo">
+      <span class="title-logo">Cinema</span>
+    </button>
+  </div>
 </mat-toolbar>
 
-<mat-menu #mainMenu="matMenu">
-  <button mat-menu-item [matMenuTriggerFor]="subMenu">Sub Menu</button>
-  <button mat-menu-item>Option 1</button>
-  <button mat-menu-item>Option 2</button>
-</mat-menu>
-
-<mat-menu #subMenu="matMenu">
-  <button mat-menu-item>Sub Option 1</button>
-  <button mat-menu-item>Sub Option 2</button>
-</mat-menu>

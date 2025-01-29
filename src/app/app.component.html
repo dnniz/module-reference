@@ -2,18 +2,7 @@
 
 
 <div class="body-container">
-    <app-rating [maxRating]="5" (ratingSeleted)="processRating($event)"></app-rating>
-
-    <p>{{title | uppercase}}</p>
-
-    <p>{{ date | date:'fullDate' }}</p>
-
-    <p>En Cartelera</p>
-    <app-list-movie [arrMovies]="arrMoviesOnCartelera"></app-list-movie>
-
-    <p>Proximos estrenos</p>
-    <app-list-movie [arrMovies]="arrMoviesNextReleases"></app-list-movie>
-
+    <router-outlet></router-outlet>
 </div>
 
 
