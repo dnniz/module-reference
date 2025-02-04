@@ -1,0 +1,26 @@
+
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Create Genre</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="form" (submit)="saveChanges()">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput [formControl]="form.controls['name']" />
+        </mat-form-field>
+        <mat-error>{{this.printErrorMessage()}}</mat-error>
+        <div class="button-actions">
+          <button mat-flat-button class="button-action" color="primary" [disabled]="form.invalid">Save</button>
+          <button mat-flat-button class="button-action" color="warn" (click)="cancel()">Cancel</button>
+        </div>
+      </form>
+
+    </mat-card-content>
+
+  </mat-card>
+</div>
+
+
+

@@ -32,5 +32,9 @@ export const routes: Routes = [
     // Actors Routes
     {path: 'actors', component: IndexActorsComponent},
     {path: 'actors/create', component: CreateActorComponent},
-    {path: 'actors/edit/:id', component: EditActorComponent}
+    {path: 'actors/edit/:id', component: EditActorComponent},
+
+    // Redirect to landing page if no route is found
+    {path: '**', redirectTo: ''},
+
 ];

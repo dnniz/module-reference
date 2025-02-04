@@ -1,3 +1,5 @@
-<p>edit-actor works!</p>
-
-<p>Current Id: {{this.id}}</p>
+<app-form-actor
+  [model]="model"
+  (postForm)="saveChanges($event)"
+  headerlabel="Edit Actor"
+></app-form-actor>

@@ -2,3 +2,13 @@
     margin: 0 100px;
     padding-bottom: 100px;
 }
+
+.header-toolbar {
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1000;
+}

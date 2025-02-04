@@ -1,4 +1,4 @@
-<p>edit-genre works!</p>
-
-
-<p>Current Id: {{this.id}}</p>
+<app-form-genre
+  [model]="model"
+  (postForm)="saveChanges($event)"
+></app-form-genre>
