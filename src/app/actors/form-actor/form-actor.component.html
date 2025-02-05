@@ -1,4 +1,23 @@
+<app-form-container
+  [title]="this.headerlabel"
+  [formGroup]="form"
+  (submitForm)="saveChanges()"
+  (cancelForm)="cancel()"
+>
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput [formControl]="form.controls['name']" />
+  </mat-form-field>
+  <app-date-picker
+    label="Date Birthday"
+    [dateOfBirthValue]="model?.dateOfBirth"
+    (dateOfBirth)="onDateOfBirthChange($event)"
+  ></app-date-picker>
+  <mat-error>{{this.printErrorMessage()}}</mat-error>
 
+</app-form-container>
+
+<!--
 <div class="container">
   <mat-card>
     <mat-card-header>
@@ -25,4 +44,4 @@
     </mat-card-content>
 
   </mat-card>
-</div>
+</div> -->

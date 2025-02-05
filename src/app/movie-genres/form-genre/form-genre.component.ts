@@ -1,17 +1,18 @@
 import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import {firstLetterCapital} from '../../shared/functions/validations';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { firstLetterCapital } from '../../shared/functions/validations';
 import { GenreCreateDto } from '../create-genre/genre-create.dto';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { GenreUpdateDto } from '../edit-genre/genre-update.dto';
+import { FormContainerComponent } from "../../shared/components/form-container/form-container.component";
 
 const { required, pattern, compose } = Validators;
 @Component({
   selector: 'app-form-genre',
-  imports: [MatButtonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatCardModule],
+  imports: [MatButtonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatCardModule, FormContainerComponent],
   templateUrl: './form-genre.component.html',
   styleUrl: './form-genre.component.css'
 })
@@ -25,6 +26,9 @@ export class FormGenreComponent implements OnInit {
 
   @Input()
   model?: GenreUpdateDto;
+
+  @Input({ required: true })
+  titleContainer!: string;
 
   @Output()
   postForm = new EventEmitter<GenreCreateDto>();
@@ -55,8 +59,7 @@ export class FormGenreComponent implements OnInit {
   }
 
   saveChanges() {
-
-   if (this.form.invalid) {
+    if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
     }
@@ -66,6 +69,7 @@ export class FormGenreComponent implements OnInit {
   }
 
   cancel() {
+
     // this.router.navigate(['/genres']);
   }
 }

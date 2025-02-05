@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, OnDestroy, OnInit, Output, signal } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -8,20 +8,15 @@ import { ActorUpdateDto } from '../edit-actor/actor-update.dto';
 import { ActorCreateDto } from '../create-actor/actor-create.dto';
 import { DatePickerComponent } from "../../shared/date-picker/date-picker.component";
 import moment from 'moment';
-// import {MatCalendar, MatDatepickerModule} from '@angular/material/datepicker';
-// import { DateAdapter, MAT_DATE_FORMATS, provideNativeDateAdapter } from '@angular/material/core';
-// import { startWith, Subject, takeUntil } from 'rxjs';
-// import { DatePickerComponent } from '../../shared/date-picker/date-picker.component';
+import { FormContainerComponent } from "../../shared/components/form-container/form-container.component";
 
 const { required, pattern } = Validators;
 
 @Component({
   selector: 'app-form-actor',
-  imports: [MatButtonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatCardModule, DatePickerComponent],
-  // providers: [provideNativeDateAdapter()],
+  imports: [MatButtonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatCardModule, DatePickerComponent, FormContainerComponent],
   templateUrl: './form-actor.component.html',
   styleUrl: './form-actor.component.css',
-  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormActorComponent implements OnInit{
   ngOnInit(): void {

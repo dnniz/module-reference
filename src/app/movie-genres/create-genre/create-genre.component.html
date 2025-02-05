@@ -1,1 +1,5 @@
-<app-form-genre (postForm)="saveChanges($event)" (cancel)="cancel()"></app-form-genre>
+<app-form-genre
+  (postForm)="saveChanges($event)"
+  (cancel)="cancel()"
+  [titleContainer]="'Create Genre'"
+></app-form-genre>
