@@ -19,4 +19,11 @@ export class EditGenreComponent {
   saveChanges(model: GenreCreateDto) {
     console.log('Genre updated', model);
   }
+
+  cancel() {
+
+    console.log('cancelled');
+
+    // this.router.navigate(['/genres']);
+  }
 }

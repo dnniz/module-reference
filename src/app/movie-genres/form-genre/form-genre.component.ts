@@ -33,6 +33,9 @@ export class FormGenreComponent implements OnInit {
   @Output()
   postForm = new EventEmitter<GenreCreateDto>();
 
+  @Output()
+  cancelForm = new EventEmitter<void>();
+
   private formBuilder = inject(FormBuilder);
 
   form = this.formBuilder.group({
@@ -70,6 +73,7 @@ export class FormGenreComponent implements OnInit {
 
   cancel() {
 
+    this.cancelForm.emit();
     // this.router.navigate(['/genres']);
   }
 }

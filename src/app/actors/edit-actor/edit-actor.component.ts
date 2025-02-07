@@ -17,9 +17,13 @@ export class EditActorComponent {
   @Input({ transform: numberAttribute})
   id!: number;
 
-  model: ActorUpdateDto = {id: 1, name: 'Dennis Pineda', dateOfBirth: moment('1994-12-01').toDate()};
+  model: ActorUpdateDto = {id: 1, name: 'Dennis Pineda', dateOfBirth: moment('1994-12-01').toDate(), imageUrl: 'https://media.revistagq.com/photos/5ca601837a3aecd7de49781d/master/w_1280,c_limit/mr_robot_serie_8793.gif'};
 
   saveChanges(model: ActorCreateDto) {
     console.log('Actor updated', model);
+  }
+
+  cancel() {
+    console.log('Cancelled');
   }
 }

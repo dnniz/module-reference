@@ -28,6 +28,9 @@ export class CreateGenreComponent{
   }
 
   cancel() {
-    this.router.navigate(['/genres']);
+
+    console.log('cancelled');
+
+    // this.router.navigate(['/genres']);
   }
 }

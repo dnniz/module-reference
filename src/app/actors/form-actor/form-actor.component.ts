@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -9,12 +9,14 @@ import { ActorCreateDto } from '../create-actor/actor-create.dto';
 import { DatePickerComponent } from "../../shared/date-picker/date-picker.component";
 import moment from 'moment';
 import { FormContainerComponent } from "../../shared/components/form-container/form-container.component";
+import { dateCoulndBeFuture } from '../../shared/functions/validations';
+import { InputImgComponent } from "../../shared/components/input-img/input-img.component";
 
 const { required, pattern } = Validators;
 
 @Component({
   selector: 'app-form-actor',
-  imports: [MatButtonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatCardModule, DatePickerComponent, FormContainerComponent],
+  imports: [MatButtonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatCardModule, DatePickerComponent, FormContainerComponent, InputImgComponent],
   templateUrl: './form-actor.component.html',
   styleUrl: './form-actor.component.css',
 })
@@ -25,6 +27,8 @@ export class FormActorComponent implements OnInit{
     }
   }
 
+  // selectedImageFile: File | null = null;  // Almacenar la imagen seleccionada
+
   @Input()
   model?: ActorUpdateDto;
 
@@ -34,15 +38,24 @@ export class FormActorComponent implements OnInit{
   @Output()
   postForm = new EventEmitter<ActorCreateDto>();
 
+  @Output()
+  cancelForm = new EventEmitter<void>();
+
+
   private formBuilder = inject(FormBuilder);
 
   form = this.formBuilder.group({
     name: ['', { validators: [required, pattern("[a-zA-Z ]*")]}],
-    dateOfBirth: [null as Date | null, { validators: [required]}],
+    dateOfBirth: new FormControl<Date | null>(null, { validators: [required, dateCoulndBeFuture()]}),
+    image: new FormControl<File | null>(null)
   });
 
   onDateOfBirthChange(date: Date | null) {
     this.form.controls['dateOfBirth'].setValue(date);
+  }
+
+  onImageSelected(file: File): void {
+    this.form.controls['image'].setValue(file);
   }
 
   printErrorMessage() {
@@ -64,6 +77,10 @@ export class FormActorComponent implements OnInit{
       return 'Date of birth must be in the format yyyy-mm-dd';
     }
 
+    if (dateOfBirth.hasError('dateCoulndBeFuture')) {
+      return dateOfBirth.getError('dateCoulndBeFuture').message;
+    }
+
     return '';
   }
 
@@ -75,12 +92,14 @@ export class FormActorComponent implements OnInit{
 
     const actor = this.form.value as ActorCreateDto;
     actor.dateOfBirth = moment(actor.dateOfBirth).toDate();
-    console.log("Save: ", actor);
+
+    // if(actor.im)
+
     this.postForm.emit(actor);
   }
 
   cancel() {
     // this.router.navigate(['/actors']);
-
+    this.cancelForm.emit();
   }
 }

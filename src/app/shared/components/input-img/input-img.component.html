@@ -1,0 +1,34 @@
+
+<mat-form-field appearance="outline">
+  <mat-label>{{ this.label }}</mat-label>
+
+  <!-- Input File Hidden -->
+  <input type="file" #fileInput hidden (change)="onFileSelected($event)" />
+
+  <!-- Input File Trigger -->
+  <input
+    matInput
+    placeholder="Choose an image"
+    [value]="file?.name || ''"
+    (click)="fileInput.click()"
+    readonly
+  />
+
+  <!-- Icon Load -->
+  <button mat-icon-button (click)="fileInput.click()">
+    <mat-icon>upload</mat-icon>
+  </button>
+
+  <!-- Preview Selected Image -->
+  <mat-hint>
+    <img
+      [src]="previewUrl || imageUrl"
+      alt="Preview"
+      class="image-preview"
+      [style.display]="previewUrl || imageUrl ? 'block' : 'none'"
+    />
+  </mat-hint>
+
+
+</mat-form-field>
+
