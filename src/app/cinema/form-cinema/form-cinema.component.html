@@ -1,0 +1,21 @@
+<app-form-container
+  [title]="this.headerlabel"
+  [formGroup]="form"
+  (submitForm)="saveChanges()"
+  (cancelForm)="cancel()"
+>
+<!-- Name Input -->
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput [formControl]="form.controls['name']" />
+  </mat-form-field>
+
+  <!-- Input coordinates -->
+  <app-map
+  (selectedCoordinate)="onSelectedCoordinate($event)"
+  [initialCoordinates]="initialCoordinates"
+  ></app-map>
+
+  <mat-error>{{this.printErrorMessage()}}</mat-error>
+
+</app-form-container>

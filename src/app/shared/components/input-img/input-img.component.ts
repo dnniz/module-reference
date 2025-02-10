@@ -21,10 +21,10 @@ import { MatInputModule } from '@angular/material/input';
 export class InputImgComponent {
 
   @Input({required: true}) label!: string;
-  @Input() imageUrl: string | undefined = undefined; 
+  @Input() imageUrl: string | undefined = undefined;
   @Output() imageSelected = new EventEmitter<File>();
 
-  previewUrl: string | ArrayBuffer | null = null;
+  previewImage: string | ArrayBuffer | null = null;
   file: File | null = null;
 
   onChange:(file: File|null) => void = () => {};
@@ -34,7 +34,7 @@ export class InputImgComponent {
   writeValue(value: File|null): void {
     if(value){
       this.file = value;
-      this.previewImage(value);
+      this.loadPreviewImage(value);
     }
   }
 
@@ -44,10 +44,6 @@ export class InputImgComponent {
 
   registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    throw new Error('Method not implemented.');
   }
 
   onFileSelected(event: Event): void {
@@ -61,18 +57,18 @@ export class InputImgComponent {
       const reader = new FileReader();
 
       reader.onload = () => {
-        this.previewUrl = reader.result;
+        this.previewImage = reader.result;
       }
 
       reader.readAsDataURL(file);
     }
   }
 
-  private previewImage(file: File): void {
+  private loadPreviewImage(file: File): void {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      this.previewUrl = reader.result;
+      this.previewImage = reader.result;
     };
   }
 }

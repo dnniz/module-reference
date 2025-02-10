@@ -1,3 +1,6 @@
-<p>edit-cinema works!</p>
-
-<p>Current Id: {{this.id}}</p>
+<app-form-cinema
+  [model]="model"
+  (cancelForm)="cancel()"
+  headerlabel="Edit Cinema"
+  (postForm)="saveChanges($event)"
+></app-form-cinema>

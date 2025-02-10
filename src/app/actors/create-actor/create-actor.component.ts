@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormActorComponent } from "../form-actor/form-actor.component";
-import { ActorCreateDto } from './actor-create.dto';
+import { ActorPostDto } from './actor-post.dto';
 
 @Component({
   selector: 'app-create-actor',
@@ -10,7 +10,7 @@ import { ActorCreateDto } from './actor-create.dto';
 })
 export class CreateActorComponent {
 
-  saveChanges(actor: ActorCreateDto) {
+  saveChanges(actor: ActorPostDto) {
     console.log('Actor created', actor);
   }
 

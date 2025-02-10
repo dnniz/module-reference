@@ -4,8 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ActorUpdateDto } from '../edit-actor/actor-update.dto';
-import { ActorCreateDto } from '../create-actor/actor-create.dto';
+import { ActorDto } from '../edit-actor/actor.dto';
+import { ActorPostDto } from '../create-actor/actor-post.dto';
 import { DatePickerComponent } from "../../shared/date-picker/date-picker.component";
 import moment from 'moment';
 import { FormContainerComponent } from "../../shared/components/form-container/form-container.component";
@@ -27,16 +27,14 @@ export class FormActorComponent implements OnInit{
     }
   }
 
-  // selectedImageFile: File | null = null;  // Almacenar la imagen seleccionada
-
   @Input()
-  model?: ActorUpdateDto;
+  model?: ActorDto;
 
   @Input({ required: true })
   headerlabel!: string;
 
   @Output()
-  postForm = new EventEmitter<ActorCreateDto>();
+  postForm = new EventEmitter<ActorPostDto>();
 
   @Output()
   cancelForm = new EventEmitter<void>();
@@ -90,7 +88,7 @@ export class FormActorComponent implements OnInit{
       return;
     }
 
-    const actor = this.form.value as ActorCreateDto;
+    const actor = this.form.value as ActorPostDto;
     actor.dateOfBirth = moment(actor.dateOfBirth).toDate();
 
     // if(actor.im)
