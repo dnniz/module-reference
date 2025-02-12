@@ -1,1 +1,50 @@
-<p>filter-movies works!</p>
+
+<div class="search-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Search for Movie</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="form" (submit)="onSubmit()">
+
+        <div class="input-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input matInput [formControl]="form.controls['title']" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Genre</mat-label>
+            <mat-select [formControl]="form.controls.genreid">
+              <mat-option [value]="0">
+                All
+              </mat-option>
+              @for(genre of genres; track $index){
+                <mat-option [value]="genre.id">
+                  {{genre.name}}
+                </mat-option>
+              }
+
+            </mat-select>
+          </mat-form-field>
+
+          <mat-checkbox [formControl]="form.controls.nextpremiere">New Incomes</mat-checkbox>
+
+          <mat-checkbox [formControl]="form.controls.incinema">Now Showing</mat-checkbox>
+        </div>
+
+
+        <div class="button-actions">
+          <!-- <button mat-flat-button class="button-action" color="primary" type="submit" [disabled]="form.invalid">Search</button> -->
+          <button mat-flat-button class="button-action" color="warn" type="button" (click)="onClean()">Clean</button>
+        </div>
+      </form>
+
+    </mat-card-content>
+
+  </mat-card>
+</div>
+
+<app-list-movie [arrMovies]="this.movies">
+
+</app-list-movie>

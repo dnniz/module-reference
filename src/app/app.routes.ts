@@ -11,6 +11,7 @@ import { EditGenreComponent } from './movie-genres/edit-genre/edit-genre.compone
 import { EditActorComponent } from './actors/edit-actor/edit-actor.component';
 import { EditCinemaComponent } from './cinema/edit-cinema/edit-cinema.component';
 import { EditMovieComponent } from './movies/edit-movie/edit-movie.component';
+import { FilterMoviesComponent } from './movies/filter-movies/filter-movies.component';
 
 export const routes: Routes = [
     {path: '', component: LandingPageComponent},
@@ -28,6 +29,7 @@ export const routes: Routes = [
     // Movies Routes
     {path: 'movies/create', component: CreateMovieComponent},
     {path: 'movies/edit/:id', component: EditMovieComponent},
+    {path: 'movies/filter', component: FilterMoviesComponent},
 
     // Actors Routes
     {path: 'actors', component: IndexActorsComponent},
