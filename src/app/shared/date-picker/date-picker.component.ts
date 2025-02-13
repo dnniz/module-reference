@@ -14,8 +14,8 @@ import { FormControl } from '@angular/forms'
 export class DatePickerComponent implements OnInit {
 
   ngOnInit(): void {
-    if (this.dateOfBirthValue) {
-      this.form.controls.dateOfBirth.setValue(this.dateOfBirthValue);
+    if (this.dateValue) {
+      this.form.controls.dateOfBirth.setValue(this.dateValue);
     }
   }
 
@@ -29,7 +29,7 @@ export class DatePickerComponent implements OnInit {
   label: string = '';
 
   @Input()
-  dateOfBirthValue!: Date|undefined;
+  dateValue!: Date|undefined;
 
   @Output()
   dateOfBirth = new EventEmitter<Date|null>();

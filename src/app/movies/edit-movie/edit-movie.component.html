@@ -1,3 +1,6 @@
-<p>edit-movie works!</p>
-
-<p>Current Id: {{this.id}}</p>
+<app-form-movie
+[model]="model"
+(postForm)="saveChanges($event)"
+(cancelForm)="cancel()"
+headerlabel="Edit Movie">
+</app-form-movie>

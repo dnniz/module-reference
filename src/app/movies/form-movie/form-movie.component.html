@@ -1,0 +1,37 @@
+<app-form-container
+  [title]="this.headerlabel"
+  [formGroup]="form"
+  (submitForm)="saveChanges()"
+  (cancelForm)="cancel()"
+>
+<!-- Tile Input-->
+<mat-form-field appearance="outline">
+  <mat-label>Name</mat-label>
+  <input matInput [formControl]="form.controls['title']" />
+</mat-form-field>
+
+<!-- Release Date Input -->
+<app-date-picker
+label="Release Date*"
+[dateValue]="model?.releaseDate"
+(dateOfBirth)="onReleaseDateChange($event)"
+></app-date-picker>
+
+
+<!-- Trailer Video Url Input -->
+<mat-form-field appearance="outline">
+  <mat-label>Trailer Video Url*</mat-label>
+  <input matInput [formControl]="form.controls['trailerVideoUrl']" />
+</mat-form-field>
+
+<!-- Load Poster Input -->
+<app-input-img
+label="Image*"
+[imageUrl]="model?.posterUrl"
+(imageSelected)="onImageSelected($event)"
+></app-input-img>
+
+<mat-error>{{this.printErrorMessage()}}</mat-error>
+
+</app-form-container>
+
