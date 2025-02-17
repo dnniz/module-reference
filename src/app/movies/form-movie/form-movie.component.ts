@@ -1,13 +1,14 @@
 import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { FormContainerComponent } from "../../shared/components/form-container/form-container.component";
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MovieDto } from '../DTOs/Movie.dto';
-import { MoviePostDto } from '../DTOs/movie-post.dto';
+import { MoviePostDto, MovieDto } from '../DTOs';
 import moment from 'moment';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { DatePickerComponent } from "../../shared/date-picker/date-picker.component";
 import { InputImgComponent } from "../../shared/components/input-img/input-img.component";
 import { MatInputModule } from '@angular/material/input';
+import { DatePickerComponent } from '../../shared/components/date-picker/date-picker.component';
+import { ChipsSelectorComponent } from "../../shared/components/chips-selector/chips-selector.component";
+import { itemSelectorDto } from '../../shared/components/chips-selector/item-selector.dto';
 const { required, pattern } = Validators;
 
 @Component({
@@ -21,7 +22,8 @@ const { required, pattern } = Validators;
     //Shared Components:
     FormContainerComponent,
     DatePickerComponent,
-    InputImgComponent
+    InputImgComponent,
+    ChipsSelectorComponent
 ],
   templateUrl: './form-movie.component.html',
   styleUrl: './form-movie.component.css'
@@ -32,6 +34,25 @@ export class FormMovieComponent implements OnInit{
         this.form.patchValue(this.model);
     }
 
+    //DB Data
+    baseItems: itemSelectorDto[] = [
+      {
+        key:1,
+        value: 'Drama'
+      },
+      {
+        key:2,
+        value: 'Comedy'
+      },
+      {
+        key:3,
+        value: 'Action'
+      },
+      {
+        key:4,
+        value: 'Animation'
+      }
+    ]
 
 
     //Model
@@ -54,7 +75,8 @@ export class FormMovieComponent implements OnInit{
           title: ['', { validators: [required]}],
           releaseDate: new FormControl<Date | null>(null, { validators: [required]}),
           trailerVideoUrl: '',
-          poster: new FormControl<File | null>(null)
+          poster: new FormControl<File | null>(null),
+          genres: new FormControl<itemSelectorDto[]>([])
         });
 
     //Trigger Functions
@@ -63,6 +85,11 @@ export class FormMovieComponent implements OnInit{
     }
     onImageSelected(file: File): void {
       this.form.controls['poster'].setValue(file);
+    }
+
+    onGenresSelected(genres: itemSelectorDto[] | undefined
+    ){
+      this.form.controls['genres'].setValue(genres? genres : [])
     }
 
     //Functions

@@ -1,0 +1,26 @@
+
+<mat-form-field class="example-chip-list">
+  <mat-label>{{this.label}}</mat-label>
+  <mat-chip-grid #chipGrid>
+    @for (item of listItems; track $index) {
+      <mat-chip-row (removed)="remove(item.key)">
+        {{item.value}}
+        <button matChipRemove [attr.aria-label]="'remove ' + item.key">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+    }
+  </mat-chip-grid>
+  <input
+    placeholder="{{this.listItems? '' : 'Select ...'}}"
+    #ItemFilterInput
+    [matChipInputFor]="chipGrid"
+    [matAutocomplete]="auto"
+    [formControl]="form.controls.itemsSelected"
+    />
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event); ItemFilterInput.value = ''">
+    @for (item of filteredItems(); track item) {
+      <mat-option [value]="item">{{item.value}}</mat-option>
+    }
+  </mat-autocomplete>
+</mat-form-field>

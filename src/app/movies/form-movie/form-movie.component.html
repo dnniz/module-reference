@@ -10,6 +10,15 @@
   <input matInput [formControl]="form.controls['title']" />
 </mat-form-field>
 
+<!-- Genre Input -->
+<app-chips-selector
+  label="Genre"
+  [listItems]="model?.genres"
+  (itemsSelected)="onGenresSelected($event)"
+  [baseItems]="baseItems"
+>
+</app-chips-selector>
+
 <!-- Release Date Input -->
 <app-date-picker
 label="Release Date*"

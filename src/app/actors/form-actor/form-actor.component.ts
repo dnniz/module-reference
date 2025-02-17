@@ -6,11 +6,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ActorDto } from '../edit-actor/actor.dto';
 import { ActorPostDto } from '../create-actor/actor-post.dto';
-import { DatePickerComponent } from "../../shared/date-picker/date-picker.component";
 import moment from 'moment';
 import { FormContainerComponent } from "../../shared/components/form-container/form-container.component";
 import { dateCoulndBeFuture } from '../../shared/functions/validations';
 import { InputImgComponent } from "../../shared/components/input-img/input-img.component";
+import { DatePickerComponent } from '../../shared/components/date-picker/date-picker.component';
 
 const { required, pattern } = Validators;
 
