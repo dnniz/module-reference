@@ -28,7 +28,7 @@ export class FormActorComponent implements OnInit{
   }
 
   @Input()
-  model?: ActorDto;
+  model: ActorDto = {dateOfBirth: null, id: 0, imageUrl: null, name: null};
 
   @Input({ required: true })
   headerlabel!: string;

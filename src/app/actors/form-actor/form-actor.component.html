@@ -13,14 +13,14 @@
   <!-- Date of Birth Input -->
   <app-date-picker
     label="Date Birthday"
-    [dateValue]="model?.dateOfBirth"
+    [dateValue]="model.dateOfBirth"
     (dateOfBirth)="onDateOfBirthChange($event)"
   ></app-date-picker>
 
   <!-- Image Input -->
   <app-input-img
     label="Image"
-    [imageUrl]="model?.imageUrl"
+    [imageUrl]="model.imageUrl"
     (imageSelected)="onImageSelected($event)"
   ></app-input-img>
 

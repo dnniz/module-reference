@@ -18,7 +18,7 @@
     [matAutocomplete]="auto"
     [formControl]="form.controls.itemsSelected"
     />
-  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event); ItemFilterInput.value = ''">
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event); ItemFilterInput.value=''">
     @for (item of filteredItems(); track item) {
       <mat-option [value]="item">{{item.value}}</mat-option>
     }

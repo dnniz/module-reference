@@ -21,7 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 export class InputImgComponent {
 
   @Input({required: true}) label!: string;
-  @Input() imageUrl: string | undefined = undefined;
+  @Input() imageUrl: string | null = null;
   @Output() imageSelected = new EventEmitter<File>();
 
   previewImage: string | ArrayBuffer | null = null;

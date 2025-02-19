@@ -13,16 +13,25 @@
 <!-- Genre Input -->
 <app-chips-selector
   label="Genre"
-  [listItems]="model?.genres"
+  [listItems]="model.genres"
   (itemsSelected)="onGenresSelected($event)"
-  [baseItems]="baseItems"
+  [baseItems]="baseItemsGenres"
+>
+</app-chips-selector>
+
+<!-- Theatre Input -->
+<app-chips-selector
+  label="Theatre"
+  [listItems]="model.theatres"
+  (itemsSelected)="onTheatreSelected($event)"
+  [baseItems]="baseItemsTheatres"
 >
 </app-chips-selector>
 
 <!-- Release Date Input -->
 <app-date-picker
 label="Release Date*"
-[dateValue]="model?.releaseDate"
+[dateValue]="model.releaseDate"
 (dateOfBirth)="onReleaseDateChange($event)"
 ></app-date-picker>
 
@@ -36,7 +45,7 @@ label="Release Date*"
 <!-- Load Poster Input -->
 <app-input-img
 label="Image*"
-[imageUrl]="model?.posterUrl"
+[imageUrl]="model.posterUrl"
 (imageSelected)="onImageSelected($event)"
 ></app-input-img>
 

@@ -29,7 +29,7 @@ export class DatePickerComponent implements OnInit {
   label: string = '';
 
   @Input()
-  dateValue!: Date|undefined;
+  dateValue!: Date | null;
 
   @Output()
   dateOfBirth = new EventEmitter<Date|null>();

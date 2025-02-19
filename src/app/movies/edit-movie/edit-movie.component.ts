@@ -26,8 +26,14 @@ export class EditMovieComponent {
           key: 4,
           value: 'animation'
         }
+      ],
+      theatres:[
+        {
+          key: 3,
+          value: 'Egyptian Theatre'
+        }
       ]
-   };
+    };
 
 
   saveChanges(actor: MoviePostDto) {

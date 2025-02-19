@@ -35,7 +35,7 @@ export class FormMovieComponent implements OnInit{
     }
 
     //DB Data
-    baseItems: itemSelectorDto[] = [
+    baseItemsGenres: itemSelectorDto[] = [
       {
         key:1,
         value: 'Drama'
@@ -53,11 +53,29 @@ export class FormMovieComponent implements OnInit{
         value: 'Animation'
       }
     ]
+    baseItemsTheatres: itemSelectorDto[] = [
+      {
+        key:1,
+        value: 'TCL Chinese Theatres'
+      },
+      {
+        key:2,
+        value: 'Academy Museum Of Motion Pictures'
+      },
+      {
+        key:3,
+        value: 'Egyptian Theatre'
+      },
+      {
+        key:4,
+        value: 'El Capitan Theatre'
+      }
+    ]
 
 
     //Model
     @Input()
-    model?: MovieDto;
+    model: MovieDto = {genres: [], id: 0, posterUrl: null, releaseDate: null, theatres: [], title: null, trailerVideoUrl: null};
 
     //Inputs & Oputs
     @Input({ required: true })
@@ -76,7 +94,8 @@ export class FormMovieComponent implements OnInit{
           releaseDate: new FormControl<Date | null>(null, { validators: [required]}),
           trailerVideoUrl: '',
           poster: new FormControl<File | null>(null),
-          genres: new FormControl<itemSelectorDto[]>([])
+          genres: new FormControl<itemSelectorDto[]>([]),
+          theatres: new FormControl<itemSelectorDto[]>([]),
         });
 
     //Trigger Functions
@@ -87,9 +106,12 @@ export class FormMovieComponent implements OnInit{
       this.form.controls['poster'].setValue(file);
     }
 
-    onGenresSelected(genres: itemSelectorDto[] | undefined
-    ){
+    onGenresSelected(genres: itemSelectorDto[] | undefined){
       this.form.controls['genres'].setValue(genres? genres : [])
+    }
+
+    onTheatreSelected(theatres: itemSelectorDto[] | undefined){
+      this.form.controls['theatres'].setValue(theatres? theatres : [])
     }
 
     //Functions

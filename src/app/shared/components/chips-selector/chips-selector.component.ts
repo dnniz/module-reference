@@ -34,13 +34,13 @@ export class ChipsSelectorComponent implements OnInit{
     label!: string;
 
   @Input()
-  listItems!: itemSelectorDto[] | undefined
+  listItems!: itemSelectorDto[]
 
   @Input({required:true})
   baseItems!: itemSelectorDto[];
 
   @Output()
-  itemsSelected = new EventEmitter<itemSelectorDto[] | undefined>();
+  itemsSelected = new EventEmitter<itemSelectorDto[]>();
 
   //Build Components
   form = inject(FormBuilder).group({
